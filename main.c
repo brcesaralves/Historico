@@ -27,12 +27,46 @@ typedef struct nota{
 
 }t_nota;
 
+t_nota * criaNo() {
+    t_nota * no = (t_nota*) malloc(sizeof(t_nota));
+
+    if (no)
+        no->prox = NULL;
+
+    return no;
+}
 
 
+
+int getTamanho(t_nota *a) {
+    int n = 0;
+    while (a != NULL) {
+        a = a->prox;
+        n++;
+    }
+    return n;
+}
+
+
+int percorrer(t_nota *lista){
+    int cont;
+    while(lista != NULL){
+        lista = lista->prox;
+        cont++;
+    }
+    return cont;
+
+}
 int main()
 {
-l = (t_nota *) malloc (sizeof(t_nota));
-l->prox->matricula.numero_matricula[0] = "1";
+
+t_nota *l;
+int a;
+
+l = criaNo();
+printf("%d", percorrer(t_nota));
+l->disciplina.disciplina[0] = 's';
+
 
 return 0;
 }
