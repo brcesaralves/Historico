@@ -64,7 +64,7 @@ t_nota *l;
 int a;
 
 l = criaNo();
-printf("%d", percorrer(t_nota));
+printf("%d", percorrer(&l->prox));
 l->disciplina.disciplina[0] = 's';
 
 
