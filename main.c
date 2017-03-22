@@ -8,6 +8,7 @@
 typedef struct disciplina{
     char disciplina[50];
     float nota;
+    char matricula[50];
 } t_disciplina;
 
 // Lista encadeado com as disciplinas e ponteiro para proximo nó
@@ -19,10 +20,10 @@ typedef struct no{
 typedef t_no *t_listaDisciplina;
 
 typedef struct alunos{
-    char matricula[10];
-    char
+    char matricula[50];
     t_no *disciplinas; // lista das disciplinas e notas
 } t_alunos;
+
 
 // Lista sequencial para armazenar os alunos
 typedef struct listaAlunos{
@@ -39,13 +40,14 @@ int menu();
 
 
 
+
 int main(){
-    int i, j, pegaOpc,opcSair, contador;
+    int percorreImprime, pegaOpc,opcSair, contador;
 
     t_listaDisciplina listaDisciplinas;
 
     t_disciplina disciplina;
-    t_listaAlunos alunos;
+    t_alunos alunos;
 
     listaDisciplinas = criaNo();
     pegaOpc = menu();
@@ -54,15 +56,45 @@ int main(){
         case 1:
 
             do{
+            printf("informe a sua matricula: ");
+            scanf("%s", &alunos.matricula);
+            inserir(&listaDisciplinas, contador, disciplina);
+
+
+
+
             printf("Informe sua disciplina: ");
             scanf("%s", &disciplina.disciplina);
+            inserir(&listaDisciplinas, contador, disciplina);
+
             printf("informa a nota da disciplina %s: ", disciplina.disciplina);
             scanf("%f", &disciplina.nota);
+            inserir(&listaDisciplinas, contador, disciplina);
+
             printf("Digite -1 para sair: ");
             scanf("%d", &opcSair);
+
+
+
             contador ++ ;
 
             }while(opcSair != -1);
+
+
+
+
+            case 2:
+                do{
+                    printf("\n%s", getElemento(listaDisciplinas, percorreImprime)->disciplina);
+                    printf("\n%f", getElemento(listaDisciplinas,percorreImprime)->nota);
+                    printf("\n%s", getElemento(listaDisciplinas, 0)->matricula);
+
+
+
+
+
+                    percorreImprime ++;
+                }while(listaDisciplinas != NULL);
 
 
 
@@ -83,11 +115,14 @@ int menu(){
 
     printf("\t\t\t\tMatricula\n");
 
+
     printf("1- Inserir\n");
     printf("2- Exibir historico\n");
     printf("0- Sair\n");
     printf("Digite sua opção: ");
     scanf("%d", &opc);
+
+
     system("cls || clear");
     return opc;
 }
@@ -186,3 +221,5 @@ int inserir(t_listaDisciplina *lista, int pos, t_disciplina dado) {
 
     return 1;
 }
+
+
